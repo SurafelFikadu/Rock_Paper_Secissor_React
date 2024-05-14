@@ -1,0 +1,203 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Resultes */
+.results {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  grid-template-areas:
+      "you-title ai-title"
+      "you-picked ai-picked";
+  max-width: 1000px;
+  margin: auto;
+}
+
+.results__heading {
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  padding: 4rem 0 8rem;
+}
+
+.results__result {
+  min-width: 10rem;
+  min-height: 10rem;
+  background: #16213d;
+  border-radius: 50%;
+  transform: scale(1.4);
+  z-index: -1;
+}
+
+.results__heading:first-of-type {
+  grid-area: you-title;
+}
+
+.results__heading:last-of-type {
+  grid-area: ai-title;
+}
+
+.results__result:first-of-type {
+  grid-area: you-picked;
+}
+
+.results__result:last-of-type {
+  grid-area: ai-picked;
+}
+
+.results.show-winner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+      "you-title ooo ai-title"
+      "you-picked result-winner ai-picked";
+}
+
+.winner .choice::after {
+  box-shadow: 0 0 0 40px #293251, 0 0 0 80px #232c4b, 0 0 0 130px #1e2949;
+  animation: winner 1s ease forwards;
+}
+
+@keyframes winner {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+.results__winner {
+  grid-area: result-winner;
+  display: grid;
+  place-items: center;
+}
+
+.results__text {
+  font-size: 3.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.play-again {
+  background: #fff;
+  outline: none;
+  border: 2px solid transparent;
+  border-radius: 0.6rem;
+  color: var(--dark-text);
+  padding: 0.6rem 3.5rem;
+  font-family: inherit;
+  text-transform: inherit;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.play-again:focus {
+  border: 2px solid var(--outline);
+}
+
+/* Utilities */
+.preload * {
+  transition: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@media(max-width: 600px) {
+  .choice {
+      width: 8rem;
+      height: 8rem;
+  }
+
+  .game::before {
+      left: 18%;
+  }
+
+  .modal__container {
+      min-height: 100vh;
+      width: 100vw;
+      z-index: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .rules-img {
+      max-width: 550px;
+  }
+
+  .modal__header {
+      display: flex;
+      flex-direction: column;
+      width: 10%;
+  }
+
+  .modal__heading {
+      position: absolute;
+      top: 10vh;
+      text-align: center;
+      left: 40vw;
+      font-size: 2.2rem;
+  }
+
+  .close-btn {
+      position: absolute;
+      bottom: 8vh;
+  }
+
+  .rules-btn {
+      right: 38vw;
+  }
+
+  .logo {
+      height: 100%;
+      width: 10rem;
+  }
+
+  .results__result {
+      transform: scale(1.2);
+  }
+
+  .results {
+      margin-top: 100px;
+      grid-template-areas:
+          "you-picked ai-picked"
+          "you-title ai-title";
+      max-width: 600px;
+  }
+
+  .results.show-winner {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+          "you-picked  ai-picked"
+          "you-title  ai-title"
+          "result-winner result-winner";
+
+      margin-top: 100px;
+  }
+}
+
+@media (600px < width <=800px) {
+  .choice {
+      width: 8rem;
+      height: 8rem;
+  }
+
+  .results__text {
+      font-size: 2.5rem;
+  }
+
+  .play-again {
+      width: 80%;
+  }
+}
+
